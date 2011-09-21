@@ -1,9 +1,9 @@
 
+%h3 What's happening?
 = form_for @tweet do |f|
-  = f.text_field :message
+  = f.text_field :message, class: "span12"
   = f.submit
 
 - if @tweets.count > 0
   = render partial: 'tweets/tweets', object: @tweets
 
-= paginate @tweets

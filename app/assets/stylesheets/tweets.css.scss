@@ -1,15 +1,19 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding-top: 50px;
+}
 .tweet {
   overflow: auto;
   margin-bottom: 10px;
+  border-bottom: 1px dotted gray;
   .avatar {
     float: left;
     width: 50px;
   }
   .tweet-contents {
-    margin-right: 50px;
+    margin-left: 5px;
     float: left;
     .tweet-row {
       font-size: 120%;
@@ -22,3 +26,4 @@
     }
   }
 }
+  

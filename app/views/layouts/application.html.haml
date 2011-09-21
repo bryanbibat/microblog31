@@ -1,15 +1,29 @@
 !!!
 %html
   %head
-    %title Microblog31
+    %title Microblog in Rails 3.1
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    .topbar
+      .topbar-inner
+        .container
+          %h3= link_to "Twitter (kuno)", root_path
+          %ul.nav
+            %li{ class: (controller.controller_name == "pages" ? "active" : nil)}= link_to "Home", root_path
+            %li{ class: (controller.controller_name == "people" ? "active" : nil)}= link_to "People", people_path
+          %ul.nav.secondary-nav
+            - if user_signed_in?
+              %li= link_to "My Profile", person_path(current_user.username)
+              %li= link_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign in", new_user_session_path
+
     .container
       - if notice
-        #notice= notice
+        .alert-message.block-message.success= notice
       - if alert
-        #alert= alert
+        .alert-message.block-message.error= alert
       
       = yield

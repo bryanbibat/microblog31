@@ -1,10 +1,4 @@
 - tweets.each do |tweet|
-  .tweet
-    .avatar= image_tag tweet.user.avatar.url(:thumb)
-    .tweet-contents
-      .tweet-row
-        %span.tweet-user-name= tweet.user.username
-      .tweet-row= tweet.message 
-      .tweet-row.mini
-        = time_ago_in_words tweet.created_at
-        ago
+  =render tweet
+
+= paginate tweets

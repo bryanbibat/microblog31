@@ -1,0 +1,10 @@
+.tweet
+  .avatar= image_tag tweet.user.avatar.url(:thumb)
+  .tweet-contents
+    .tweet-row
+      %span.tweet-user-name
+        = link_to tweet.user.username, person_path(tweet.user.username)
+    .tweet-row= tweet.message 
+    .tweet-row.mini
+      = time_ago_in_words tweet.created_at
+      ago

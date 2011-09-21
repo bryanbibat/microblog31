@@ -1,0 +1,19 @@
+// Place all the styles related to the people controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.follow-links {
+  overflow: auto;
+  .following {
+    float:left;
+    width: 45%;
+    margin-right: 10px;
+  }
+  .follower {
+    float:left;
+    margin-left: 10px;
+    width: 45%;
+  }
+}
+.pic {
+  padding: 5px;
+}

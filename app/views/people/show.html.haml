@@ -1,0 +1,42 @@
+.avatar= image_tag @person.avatar.url(:thumb)
+
+%h1= @person.username
+
+- if user_signed_in? 
+  - if current_user == @person
+    %h2 This is you!
+  - elsif current_user.following.include? @person
+    %h2 You are following this person
+  - else
+    %h2 You are not following this person
+
+.follow-links
+  .following
+    %h3
+      following
+      = pluralize @person.following.count, "person"
+
+    - @person.following.each do |user|
+      .pic
+        = link_to (image_tag user.avatar(:mini), title: user.username), person_path(user.username)
+
+
+  .follower
+    %h3
+      has
+      = pluralize @person.followers.count, "follower"
+
+    - @person.followers.each do |user|
+      .pic
+        = link_to (image_tag user.avatar(:mini), title: user.username), person_path(user.username)
+
+- if user_signed_in? 
+  .well
+    - if current_user == @person
+      = link_to "Edit My Profile", edit_user_registration_path, class: "btn large primary"
+    - elsif current_user.following.include? @person
+      = link_to "Unfollow this Person", unfollow_person_path(@person.username), class: "btn large primary", method: :put
+    - else
+      = link_to "Follow this Person", follow_person_path(@person.username), class: "btn large primary", method: :put
+
+= render partial: 'tweets/tweets', object: @tweets
