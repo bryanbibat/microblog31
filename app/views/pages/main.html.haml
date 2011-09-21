@@ -1,0 +1,9 @@
+
+= form_for @tweet do |f|
+  = f.text_field :message
+  = f.submit
+
+- if @tweets.count > 0
+  = render partial: 'tweets/tweets', object: @tweets
+
+= paginate @tweets

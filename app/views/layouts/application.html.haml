@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Microblog31
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container
+      - if notice
+        #notice= notice
+      - if alert
+        #alert= alert
+      
+      = yield
