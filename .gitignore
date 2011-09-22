@@ -7,3 +7,4 @@ tmp/
 *.un~
 Session.vim
 /public/system/*
+/public/assets/*

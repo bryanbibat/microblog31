@@ -1,6 +1,7 @@
-.avatar= image_tag @person.avatar.url(:thumb)
-
-%h1= @person.username
+.person
+  .avatar= image_tag @person.avatar.url(:thumb)
+  .user-contents
+    %h1= @person.username
 
 - if user_signed_in? 
   - if current_user == @person
@@ -15,17 +16,13 @@
     %h3
       following
       = pluralize @person.following.count, "person"
-
     - @person.following.each do |user|
       .pic
         = link_to (image_tag user.avatar(:mini), title: user.username), person_path(user.username)
-
-
   .follower
     %h3
       has
       = pluralize @person.followers.count, "follower"
-
     - @person.followers.each do |user|
       .pic
         = link_to (image_tag user.avatar(:mini), title: user.username), person_path(user.username)
@@ -38,5 +35,8 @@
       = link_to "Unfollow this Person", unfollow_person_path(@person.username), class: "btn large primary", method: :put
     - else
       = link_to "Follow this Person", follow_person_path(@person.username), class: "btn large primary", method: :put
+- else
+  %p
+    = link_to "Sign up to follow this person", new_user_registration_path
 
 = render partial: 'tweets/tweets', object: @tweets

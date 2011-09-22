@@ -5,16 +5,18 @@ body {
   padding-top: 50px;
 }
 .tweet {
-  overflow: auto;
+  overflow: hidden;
   margin-bottom: 10px;
   border-bottom: 1px dotted gray;
   .avatar {
     float: left;
     width: 50px;
+    text-align: center;
   }
   .tweet-contents {
     margin-left: 5px;
     float: left;
+    width: 880px;
     .tweet-row {
       font-size: 120%;
       .tweet-user-name {

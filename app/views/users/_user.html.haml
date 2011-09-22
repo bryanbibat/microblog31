@@ -4,13 +4,13 @@
     .tweet-row
       %span.tweet-user-name
         = link_to user.username, person_path(user.username)
-    .tweet-row
-      - if current_user == user
-        This is you!
-      - elsif current_user.following.include? user
-        You are following this person
-        = link_to "Unfollow this Person", unfollow_person_path(user.username), class: "btn primary", method: :put
-      - else
-        You are not following this person
-        = link_to "Follow this Person", follow_person_path(user.username), class: "btn primary", method: :put
-      
+    - if user_signed_in?    
+      .tweet-row
+        - if current_user == user
+          This is you!
+        - elsif current_user.following.include? user
+          You are following this person
+          = link_to "Unfollow this Person", unfollow_person_path(user.username), class: "btn primary", method: :put
+        - else
+          You are not following this person
+          = link_to "Follow this Person", follow_person_path(user.username), class: "btn primary", method: :put

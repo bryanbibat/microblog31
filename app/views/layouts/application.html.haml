@@ -12,6 +12,8 @@
           %h3= link_to "Twitter (kuno)", root_path
           %ul.nav
             %li{ class: (controller.controller_name == "pages" ? "active" : nil)}= link_to "Home", root_path
+            - if user_signed_in?
+              %li{ class: (params[:action] == "global" ? "active" : nil)}= link_to "Global Tweets", global_tweets_path
             %li{ class: (controller.controller_name == "people" ? "active" : nil)}= link_to "People", people_path
           %ul.nav.secondary-nav
             - if user_signed_in?

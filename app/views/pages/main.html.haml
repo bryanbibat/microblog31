@@ -1,3 +1,7 @@
+.person
+  .avatar= image_tag current_user.avatar.url(:thumb)
+  .user-contents
+    %h1= current_user.username
 
 %h3 What's happening?
 = form_for @tweet do |f|

@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
+  before_filter :authenticate_user!, only: :create
+
   def global
-    @tweets = Tweet.includes(:user).order("created_at DESC")
+    @tweets = Tweet.includes(:user).order("created_at DESC").page(params[:page])
   end
 
   def create

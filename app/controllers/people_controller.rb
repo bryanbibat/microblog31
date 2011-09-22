@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   before_filter :load_person, except: :index
+  before_filter :authenticate_user!, only: [:follow, :unfollow]
 
   def index
     @people = User.order("username").page(params[:page])
